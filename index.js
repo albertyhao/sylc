@@ -344,6 +344,16 @@ function startServer() {
     res.sendFile(filePath);
   });
 
+  app.get('/resources', (req, res, next) => {
+    var filePath = path.join(__dirname, './resources.html');
+    res.sendFile(filePath);
+  });
+
+  app.post('resources', (req, res, next) => {
+		console.log(req.body);
+		res.send('OK');
+	});
+
   app.post('organizationsignup', (req, res, next) => {
 		console.log(req.body);
 		res.send('OK');
