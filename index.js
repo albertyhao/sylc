@@ -112,6 +112,24 @@ function startServer() {
     res.send(fileContents)
   });
 
+  app.get('/todo', (req, res, next) =>{
+    var filePath = path.join(__dirname, '/todo.html');
+    var fileContents = fs.readFileSync(filePath, 'utf8')
+    res.send(fileContents)
+  });
+
+  app.get('/todo.css', (req, res, next) =>{
+    var filePath = path.join(__dirname, '/todo.css');
+    var fileContents = fs.readFileSync(filePath, 'utf8')
+    res.send(fileContents)
+  });
+
+  app.get('/todo.js', (req, res, next) =>{
+    var filePath = path.join(__dirname, '/todo.js');
+    var fileContents = fs.readFileSync(filePath, 'utf8')
+    res.send(fileContents)
+  });
+
   app.get('/individualprofile', (req, res, next) =>{
     if(!req.user) return res.redirect('/login');
     var filePath = path.join(__dirname, '/individualprofile.html');
