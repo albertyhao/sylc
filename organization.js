@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var model = mongoose.model('organization', new mongoose.Schema({
+var model = mongoose.model('makegroup', new mongoose.Schema({
   name: {
     type: String,
     unique: true

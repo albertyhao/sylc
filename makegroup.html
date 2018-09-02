@@ -73,7 +73,7 @@
   			var req = new XMLHttpRequest();
   			if (!data.name) return alert('Fill out all fields')
   			// Opening up a connection with the server to 'POST' data
-  			req.open('POST', '/organization', true);
+  			req.open('POST', '/makegroup', true);
 
   			// Explain to the server that we are sending the data in json format
   			req.setRequestHeader('content-type', 'application/json')
