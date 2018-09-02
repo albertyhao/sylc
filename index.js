@@ -325,8 +325,8 @@ function startServer() {
     })
   });
 
-  app.get('/application', (req, res, next) => {
-    var filePath = path.join(__dirname, './application.html');
+  app.get('/groupapplication', (req, res, next) => {
+    var filePath = path.join(__dirname, './groupapplication.html');
     res.sendFile(filePath);
   });
 
