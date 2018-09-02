@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Your Profile</title>
+    <link href = "/main.css" rel = "stylesheet">
+    <style>
+
+    #header{
+      font-family: 'Do Hyeon', sans-serif;
+      margin:0;
+      padding:1vw;
+      background-color: #032b25;
+      color:white;
+      font-size:2vw;
+      text-align:left;
+      margin-bottom:30vh;
+    }
+
+    .link{
+      font-family: 'Do Hyeon', sans-serif;
+      color:white;
+      float:right;
+      padding-right:4vw;
+      text-decoration: none;
+    }
+    </style>
+  </head>
+  <body>
+    <div id='header'>
+      <label>NonProfiteering</label>
+      <a href="/" class='link'>Home</a>
+      <a href='/feed' class='link'>Feed</a>
+      <a href='/events' class='link'>Events</a>
+      <a href='/individualprofile' class='link'>My Profile</a>
+    </div>
+		<table>
+			<tr>
+				<td>
+					<img id='profpic' style="border: 2px solid black; width: 300px; height: 300px" src=''/>
+				</td>
+				<td>
+					<h2 id = "uname"></h2>
+  				<p id = "username" style = "font-size: 30px; font-family: Lato;"></p>
+          <h2 id = "org"></h2>
+          <p style="font-size: 16px">its a bio :O</p>
+      		<table>
+      			<tr>
+      				<td>
+      					<a href="/posts"><p>Posts</p></a>
+      				</td>
+      				<td>
+      					<a href='/individualprofilefollowing'><p>Following</p></a>
+
+      				</td>
+      				<td>
+      					<a href='/individualprofilefollowers'><p>Followers</p></a>
+
+      				</td>
+      			</tr>
+      		</table>
+				</td>
+			</tr>
+		</table>
+    <a href='/editindividualprofile'>Edit Profile</a>
+
+    <script>
+    	var uname = document.querySelector('#uname');
+    	uname.innerHTML = '{{NAME}}'
+
+
+    	var username = document.querySelector('#username')
+    	username.innerHTML = '@{{USERNAME}}'
+
+    	// var organization = document.querySelector('#org')
+    	// organization.innerHTML = 'Organization: {{ORG}}'
+
+
+    	var profpic = document.querySelector('#profpic')
+    	profpic.src = '{{PROFPIC}}'
+    </script>
+  </body>
+</html>

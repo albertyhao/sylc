@@ -1,0 +1,47 @@
+#title {
+  color: #157C8C;
+  font-family: 'Roboto';
+  text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #1999AD;
+  font-family: 'Lato', sans-serif;
+}
+
+header {
+  color: #012F85;
+}
+
+a {
+  color:#10D2F5;
+}
+
+#header{
+  font-family: 'Do Hyeon', sans-serif;
+  margin:0;
+  padding:1vw;
+  background-color: #00215F;
+  color:white;
+  font-size:2vw;
+  text-align:left;
+}
+
+.link{
+  font-family: 'Lato', sans-serif;
+  color:white;
+  float:right;
+  padding-right:4vw;
+  text-decoration: none;
+}
+  .div {
+    position: fixed(top:0)
+  }
+
+  .h1 {
+    position: fixed(top:0)
+  }
+
+  .h2 {
+    position: fixed(top:0)
+  }

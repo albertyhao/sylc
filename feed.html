@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Summit Feed</title>
+  <link href = "/main.css" rel = "stylesheet">
+  <link href = "/feed.css" rel = "stylesheet">
+  <style>
+  </style>
+</head>
+
+<body>
+    <div id='header'>
+      <label>NonProfiteering</label>
+      <a href="/" class='link'>Home</a>
+      <a href='/feed' class='link'>Feed</a>
+      <a href='/events' class='link'>Events</a>
+      <a href='/individualprofile' class='link'>My Profile</a>
+    </div>
+
+  <h1>Create a Post</h1>
+  <div>
+    <input id='Title' type='text' name='Title' placeholder='Title of Post'>
+  </div>
+  <div>
+    <input id='Text' type='text' name='Text' placeholder='Contents of Post'>
+  </div>
+  <div>
+    <label>Attach Picture/Video/Audio File</label>
+    <input type='file' accept="image/*" name='file' id='file'/>
+    <div id='preview'></div>
+  </div>
+
+  <button name="post">Post</button>
+  <h1>Your Feed</h1>
+  <div id='feeds'></div>
+  <script src='/js/socket.io.js'></script>
+  <script type="text.javascript" src='index.js'></script>
+  <script>
+    var user = '{{USER}}';
+    var userId = '{{USERID}}';
+    var inputs = document.querySelectorAll('input')
+    var $button = document.querySelector('button')
+    var $preview = document.querySelector('#preview')
+    var post = {}
+    var imageData;
+    var arrayOfPosts = [];
+    var socket = io({query: {user: user}});
+    $button.addEventListener('click', Post)
+
+    function Post() {
+      post.author = '{{USER}}';
+      post.title = document.getElementsByName('Title')[0].value
+      post.file = imageData;
+      post.contents = document.getElementsByName('Text')[0].value
+      socket.emit('newPost', {post: inputs.value
+        , user: user
+        , title: post.title
+        , author : post.author
+        , contents: post.contents
+      });
+      inputs.value = '';
+      sendData(post);
+    }
+    socket.on('post', (post) => {
+      arrayOfPosts.unshift(post);
+      document.querySelector('#feeds').innerHTML = arrayOfPosts.map(addFeed).join('');
+    });
+
+    var $imageInput = document.querySelector('#file')
+  	$imageInput.addEventListener('change', previewImage);
+
+    function previewImage() {
+  		var fileReader = new FileReader();
+  		fileReader.onload = function(e) {
+  			imageData = e.target.result;
+  			var $img = document.createElement('img');
+  			$img.src = imageData;
+  			$preview.innerHTML = '';
+  			$preview.appendChild($img)
+  		}
+  		fileReader.readAsDataURL($imageInput.files[0]);
+  	}
+
+    function sendData(data) {
+  		// Creating a new request to the server that contains the data
+  		var req = new XMLHttpRequest();
+  		// Opening up a connection with the server to 'POST' data
+  		req.open('POST', '/feed', true);
+
+  		// Explain to the server that we are sending the data in json format
+  		req.setRequestHeader('content-type', 'application/json')
+  		// Alert the user to any errors from the server
+  		function readyStateChange() {
+  			if (req.readyState !== 4) return;
+  			if (req.status !== 200) return;
+  			var data = JSON.parse(req.responseText);
+  			if (data.error) {
+  				alert(data.error);
+  			}
+  		}
+  		req.onreadystatechange = readyStateChange;
+
+  		// Sending the data in JSON format
+  		req.send(JSON.stringify(data));
+  	}
+
+    function loadFeeds() {
+      var req = new XMLHttpRequest();
+      req.open('GET', '/allfeeds', true);
+      req.setRequestHeader('content-type', 'application/json')
+
+      function readyStateChange() {
+  			if (req.readyState !== 4) return;
+  			if (req.status !== 200) return;
+  			var data = JSON.parse(req.responseText);
+  			if (data.error) {
+  				return alert(data.error);
+  			}
+        while(data.length) {
+          arrayOfPosts.unshift(data.pop());
+        }
+        document.querySelector('#feeds').innerHTML = arrayOfPosts.map(addFeed).join('');
+
+
+      }
+
+      req.onreadystatechange = readyStateChange;
+      req.send();
+    }
+
+    function storeData() {
+      var data = {};
+      for (var i = 0; i < $inputs.length; i++) {
+        var $input = $inputs[i];
+        if($input.type === 'text' || $input.type === 'password'){
+          data[$input.name] = $input.value
+        }else if($input.type === 'file'){
+          data[$input.name] = imageData;
+        }
+      }
+      verifyPassword();
+      sendData(data);
+    }
+
+    function addFeed(feed) {
+      var h3img = '';
+      if(feed.file) {
+        h3img = `<h3><img src = '${feed.file}'><h3>`
+      }
+      return `<div>
+        <h2>Title: ${feed.title}</h2>
+        <h3>Author: <img src = '/profile/{{USER}}'> ${feed.author.username}</h3>
+        <h3>Contents: ${feed.contents}</h3>
+        ${h3img}
+      </div>`
+    }
+    loadFeeds();
+  </script>
+</body>
+
+</html>

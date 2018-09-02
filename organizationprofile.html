@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Organization Profile</title>
+  <link href = "/main.css" rel = "stylesheet">
+  <style>
+
+  #header{
+    font-family: 'Do Hyeon', sans-serif;
+    margin:0;
+    padding:1vw;
+    background-color: #032b25;
+    color:white;
+    font-size:2vw;
+    text-align:left;
+    margin-bottom:30vh;
+  }
+
+  .link{
+    font-family: 'Do Hyeon', sans-serif;
+    color:white;
+    float:right;
+    padding-right:4vw;
+    text-decoration: none;
+  }
+  </style>
+  <script>
+    var org = {{ORG}};
+    var isOwner = {{ISOWNER}};
+  </script>
+</head>
+
+<body>
+  <div id='header'>
+    <label>NonProfiteering</label>
+    <a href="/" class='link'>Home</a>
+    <a href='/feed' class='link'>Feed</a>
+    <a href='/events' class='link'>Events</a>
+    <a href='/individualprofile' class='link'>My Profile</a>
+  </div>
+
+  <h1>{{organization.name}}</h1>
+  <h2>Members: <h2>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openContents(event, 'Posts')">Posts</button>
+    <button class="tablinks" onclick="openContents(event, 'Products')">Products</button>
+    <button class="tablinks" onclick="openContents(event, 'Events')">Events</button>
+  </div>
+
+  <a id='edit' href='/organization/organization.id/profile/edit' class='btn'>Edit Profile</a>
+  <a href='/organizationfollowers' class='btn'>Followers</a>
+  <a href='/organizationfollowing' class='btn'>Following</a>
+  <!-- Tab content -->
+  <div id="Posts" class="tabcontent">
+    <h3>Posts</h3>
+    <p>Posts</p>
+  </div>
+
+  <div id="Products" class="tabcontent">
+    <h3>Products</h3>
+    <p>Products</p>
+    <div>
+      <p>
+        item i guess
+      </p>
+      <button>Add Item to Cart</button>
+      <a href='/cart'class='btn'>View Cart</a>
+    </div>
+  </div>
+
+  <div id="Events" class="tabcontent">
+    <h3>Events</h3>
+    <p>Events</p>
+  </div>
+  <script>
+    function openContents(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    function product(){
+      document.createElement('div')
+      div.innerHTML = product.name
+      div.id = "name"
+      document.createElement('div')
+      div.innerHTML = product.rating
+      div.id = "rating"
+      document.createElement('div')
+      div.id = "price"
+      div.innerHTML = product.price
+    }
+
+    var $edit = document.querySelector('#edit');
+    if(!isOwner) {
+      $edit.style.display = 'none';
+    } else {
+      $edit.href = $edit.href.replace('organization.id', org._id);
+    }
+  </script>
+</body>
+</html>

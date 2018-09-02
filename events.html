@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	    <title>Summit | Events</title>
+			<link href = "/main.css" rel = "stylesheet">
+	    <style>
+
+			#header{
+				font-family: 'Do Hyeon', sans-serif;
+				margin:0;
+				padding:1vw;
+				background-color: #032b25;
+				color:white;
+				font-size:2vw;
+				text-align:left;
+				margin-bottom:30vh;
+			}
+
+			.link{
+				font-family: 'Do Hyeon', sans-serif;
+				color:white;
+				float:right;
+				padding-right:4vw;
+				text-decoration: none;
+			}
+			*{
+				margin:0;
+				padding:0;
+			}
+
+			body{
+				background-image:url(https://images.unsplash.com/photo-1490187763999-9f273a5b7516?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a37d091f7fe0e9f782312abd020c1993&auto=format&fit=crop&w=1500&q=80);
+			}
+
+			.header{
+				padding:1vw;
+				background:white;
+				position:fixed;
+				width:100%;
+				text-align:center;
+				top:0;
+			}
+
+			.header a{
+				margin:0 5vw;
+			}
+
+
+			.title{
+				color:white;
+				margin-top:20vh;
+				font-size:3vw;
+				left:10vw;
+			}
+
+			.articleSection{
+				background:white;
+				margin-top:20vw;
+				font-size:1vw;
+				width:100%;
+				height:50vw
+			}
+
+			.smallHeader{
+				margin:0 20vw;
+				position:relative;
+			}
+
+			.smallHeader a{
+				position:absolute;
+			}
+
+			.smallHeader input{
+				position:absolute;
+				right:8vw;
+			}
+
+			.smallHeader button{
+				position:absolute;
+				right:0;
+			}
+
+			.article{
+				margin:0 20vw;
+			}
+
+			.footer{
+
+			}
+
+			button{
+				width:20px;
+			}
+
+			#articleDescription{
+				height:20vh;
+			}
+
+			#imageHeadline{
+				height:20vh;
+			}
+			</style>
+	</head>
+	<body>
+		<div id='header'>
+			<label>NonProfiteering</label>
+			<a href="/" class='link'>Home</a>
+			<a href='/feed' class='link'>Feed</a>
+			<a href='/events' class='link'>Events</a>
+			<a href='/individualprofile' class='link'>My Profile</a>
+		</div>
+
+	    <div class='title'>
+	        NEWS & UPDATES
+	    </div>
+
+	    <div class='articleSection'>
+	        <div class='smallHeader'>
+	            <a href='/eventspage.html'>All Posts</a>
+	            <input type='search'>
+	            <button id='signUpOrLogin'>Login/Signup</button>
+	        </div>
+	        <div class='article'>
+
+	            <img id='imageHeadline' src='https://pbs.twimg.com/profile_images/589509318979887104/qV0u-iNC_400x400.jpg'>
+
+    	        <div id='articleDescription'>
+
+        	        <div id='userheading'>
+        	            <img id='icon' src='https://www.biography.com/.image/t_share/MTQwODQ0Nzc0MjIyNDczMDA2/joe-biden-official-portrait_1600jpg.jpg' style='width:50px; height:50px; border-radius:50%; display:inline;'>
+        	            <label id='op' style='display:block;'>Joe Biden</label>
+        	            <label id='dateofpost'>July 14th</label>
+        	            <label id='timeofpost'> || 2 minutes ago</label>
+        	            <button id='more'></button>
+        	        </div>
+
+        	        <div id='summaryarticle'>
+        	            <h3>
+        	                Modern Day Meetings
+        	            </h3>
+        	            <p id='description'>
+        	                are the pinnacle of capitalism
+        	            </p>
+        	        </div>
+
+        	        <div id='footer'>
+        	            <div id='viewcoount'>
+        	                0 views
+        	            </div>
+
+        	            <a href='/comment'>Write a comment</a>
+        	            <button id='heart'></button>
+        	       </div>
+
+	            </div>
+	        </div>
+	       </div>
+	</body>
+</html>

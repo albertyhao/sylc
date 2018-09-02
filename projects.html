@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Projects</title>
+		<link href= '/webfonts.css' rel= 'stylesheet'>
+		<link href = "/main.css" rel = "stylesheet">
+
+		<style>
+
+		@import url('https://fonts.googleapis.com/css?family=Lato');
+		@import url('https://fonts.googleapis.com/css?family=Merriweather:700');
+		@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,300");
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+			#leftpanel{
+				float: left;
+				width: 100%;
+				border: solid 2px;
+				padding: 2px;
+				height: 90vh;
+				overflow: scroll;
+			}
+			#leftpanel dt {
+				color: red;
+			}
+
+			table, tr {
+				height: 100%;
+				width: 100%;
+				margin: 0;
+			}
+
+			td {
+				padding:1em;
+			}
+
+			td input {
+				width: 100%;
+				font-size:1.5em;
+			}
+
+			.newproject {
+
+			}
+			#new_project_name {
+				width: 40%;
+			}
+			#new_project_owner {
+				width: 40%;
+				text-align: center;
+			}
+			.new_project {
+				height: 1.5em;
+				width: 1.5em;
+				float: right;
+				margin-right: 10px;
+				cursor: pointer;
+			}
+			#new_project {
+
+				margin-top: -15px;
+
+			}
+
+			.project_name {
+				width: 33%;
+			}
+			.project_owner {
+				width: 33%;
+				text-align: center;
+			}
+			.date_created {
+				width: 33%;
+				text-align: right;
+			}
+
+			p{
+				text-align: center;
+			}
+			dl {
+				border: solid 1px;
+				height: 5em;
+				margin: 10px;
+			}
+			.project_name, .project_owner, .date_created {
+				color: black;
+			}
+			#search {
+				width: 93%;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+			.fa-search {
+				position: relative;
+				left: -2em;
+
+			}
+			.createproject {
+				margin-top: 10px;
+
+
+			}
+			.header {
+				height: 10vh !important;
+			}
+			/* The side navigation menu */
+			.sidenav {
+				height: 100%; /* 100% Full-height */
+				width: 0; /* 0 width - change this with JavaScript */
+				position: fixed; /* Stay in place */
+				z-index: 1; /* Stay on top */
+				top: 0; /* Stay at the top */
+				left: 0;
+				background-color: #111; /* Black*/
+				overflow-x: hidden; /* Disable horizontal scroll */
+				padding-top: 60px; /* Place content 60px from the top */
+				transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+			}
+
+			/* The navigation menu links */
+			.sidenav a {
+				padding: 8px 8px 8px 32px;
+				text-decoration: none;
+				font-size: 25px;
+				color: #818181;
+				display: block;
+				transition: 0.3s;
+			}
+
+			/* When you mouse over the navigation links, change their color */
+			.sidenav a:hover {
+				color: #f1f1f1;
+			}
+
+			/* Position and style the close button (top right corner) */
+			.sidenav .closebtn {
+				position: absolute;
+				top: 0;
+				right: 25px;
+				font-size: 36px;
+				margin-left: 50px;
+			}
+
+			/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+			#main {
+				transition: margin-left .5s;
+				padding: 20px;
+			}
+
+			/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+			@media screen and (max-height: 450px) {
+				.sidenav {padding-top: 15px;}
+				.sidenav a {font-size: 18px;}
+			}
+			#title {
+				text-align: center;
+				color: black;
+			}
+			.menu {
+				height: 2em;
+				width: 2em;
+				margin-top: -50px;
+			}
+			.menu, #title {
+				display: block;
+			}
+
+
+
+
+			#add_new{
+				display: inline-block;
+			}
+
+
+
+
+			/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+			.show {display:block;}
+
+			#newprojectoption {
+				display:none;
+			}
+			#labels {
+				height: 2em;
+			}
+			#labels p {
+				display: inline-block;
+			}
+			#dateLabel {margin-left: 570px;position: relative;}
+			#ownerLabel {margin-left: 560px;position: relative;}
+			#projectLabel {margin-left: 10px;position: relative;}
+
+		</style>
+		<script type="text/javascript" src="//code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script>
+			window.data = {{DATA}}
+		</script>
+	</head>
+	<body>
+		<header id="header">
+			<div class="main_nav">
+					<div class="container">
+							<div class="mobile-toggle"> <span></span> <span></span> <span></span> </div>
+							<nav>
+									<ul>
+											<li><a href="/#header">Home</a></li>
+											<li><a href="/feed">Feed</a></li>
+											<li><a href="/events">Events</a></li>
+											<li><a href="/individualprofile">My Profile</a></li>
+									</ul>
+							</nav>
+					</div>
+			</div>
+			<div class="title">
+				<div>
+					<span class="typcn typcn-heart-outline icon heading"><img src = "https://pbs.twimg.com/profile_images/589509318979887104/qV0u-iNC_400x400.jpg" height="20%" width="20%" class="heading"></span>
+				</div>
+				<div class="smallsep heading"></div>
+				<h1 class="heading" id = "title">Summit Internship</h1>
+				<a class="smoothscroll" href="#about">
+				<div class="mouse">
+					<div class="wheel"></div>
+				</div>
+				</a> </div>
+			<a class="smoothscroll" href="#about">
+			<div class="scroll-down"></div>
+			</a> </header>
+		</header>
+			<h1 id="title" style="font-family: Source Sans Pro; color: black !important; text-align: center;">Projects</h1>
+		<section>
+			<!--
+			<img class="menu" onclick="openNav()" src="https://d30y9cdsu7xlg0.cloudfront.net/png/604152-200.png">
+			<nav id="mySidenav" class="sidenav">
+				<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+				<a href="/explore">Explore</a>
+				<a href="/projects">Projects</a>
+				<a href="#">Resources</a>
+			</nav>
+			-->
+		</section>
+		<section id="main">
+			<div id = 'leftpanel'>
+				<input type = 'text' id = 'search'>
+				<i class="fas fa-search"></i>
+				<img onclick="addNewProject()" id="add_new" class="new_project" src="https://image.flaticon.com/icons/svg/54/54908.svg">
+
+				<div class="newproject">
+					<div id="newprojectoption" class="addnewprojectstuff">
+						<center>
+							<input class="createproject" type='text' placeholder="Project Name">
+							<button id="new_project">Create</button>
+						</center>
+					</div>
+				</div>
+				<div id="labels">
+					<table><tbody><tr><td class="project_name">Project Name</td><td class="project_owner">Owner</td><td class="date_created">Date Created</td></tr></tbody></table>
+				</div>
+			</div>
+
+		</section>
+		<script src='/projects.js'></script>
+	</body>
+</html>

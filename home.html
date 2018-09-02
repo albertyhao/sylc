@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+      <link href = "/main.css" rel = "stylesheet">
+      <style>
+        *{
+          margin:0;
+          padding:0;
+        }
+
+        #title {
+          text-align: center;
+        }
+        body{
+
+              background-image: url(https://images.unsplash.com/photo-1531701700846-f419efed7d66?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=cc61b770b187533d8b575488ce1c6312&auto=format&fit=crop&w=1500&q=80);
+              background-size: cover;
+              background-position: center;
+        }
+
+        #about{
+          background-color: white;
+          padding:1vw;
+        }
+        #header{
+        	font-family: 'Do Hyeon', sans-serif;
+        	margin:0;
+        	padding:1vw;
+        	background-color: #032b25;
+        	color:white;
+        	font-size:2vw;
+        	text-align:left;
+          margin-bottom:30vh;
+        }
+
+        .link{
+        	font-family: 'Do Hyeon', sans-serif;
+        	color:white;
+        	float:right;
+        	padding-right:4vw;
+        	text-decoration: none;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create four equal columns that floats next to each other */
+        .column {
+            float: left;
+            width: 25%;
+            padding: 10px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+      </style>
+
+      <meta charset="UTF-8">
+      <title>Home</title>
+    </head>
+
+    <body>
+      <!--<header id="header">
+        <div class="main_nav">
+            <div class="container">
+                <div class="mobile-toggle"> <span></span> <span></span> <span></span> </div>
+                <nav>
+                    <ul>
+                        <li><a href="/#header">Home</a></li>
+                        <li><a href="/feed">Feed</a></li>
+                        <li><a href="/events">Events</a></li>
+                        <li><a href="/individualprofile">My Profile</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>-->
+        <div id='header'>
+    			<label>NonProfiteering</label>
+    			<a href="/" class='link'>Home</a>
+    			<a href='/feed' class='link'>Feed</a>
+    			<a href='/events' class='link'>Events</a>
+    			<a href='/individualprofile' class='link'>My Profile</a>
+    		</div>
+        <div class="title">
+          <div class="smallsep heading"></div>
+          <h1 class="heading" id = "title">Summit Internship</h1>
+          <br><br><br><br><br><br><br><br><br><br>
+          <a class="smoothscroll" href="#about">
+          <div class="mouse">
+            <div class="wheel"></div>
+          </div>
+          </a> </div>
+        <a class="smoothscroll" href="#about">
+        <div class="scroll-down"></div>
+        </a> </header>
+
+      <!-- About Section
+      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+      <section id="about">
+        <center>
+          <br>
+          <a href="/signup"><button class="btn heading" style = ""> SIGN UP! </button></a>
+          <a href="/organizationsignup"><button class="btn heading" style = ""> ORGANIZATION SIGN UP! </button></a>
+          <br>
+        </center>
+
+        <br>
+        <div class="container">
+            <div class="row">
+                <div class="column">
+                  <h1>About</h1>
+                  <p>EntreDev provides entrepreneurs with opportunities to create new business projects by connecting and collaborating with people passionate about startups to foster innovation.</p>
+                </div>
+                <div class="column">
+                  <h3>Feed</h3>
+                  <p>
+                      Explore is one of the key features of EntreDev! It allows entrepreneurs to discover projects they are passionate about and contribute!
+                  </p>
+                </div>
+                <div class="column">
+                    <h3>Events</h3>
+                    <p>
+                        Collaboration is another attribute of EntreDev! It allows users to track progress, accept members, and delegate tasks.
+                    </p>
+                </div>
+                <div class="column">
+                    <h3>Resources</h3>
+                    <p>
+                        Resources is an extremely beneficial feature of EntreDev! It provides materials to help inexperienced entrepreneurs start a business.
+                    </p>
+                </div>
+            </div>
+          </div>
+      </section>
+					<script>
+            var $button = document.querySelector('#login')
+            var user = "{{USER}}";
+            if(user){
+              $button.innerHTML = "Logout"
+              $button.href = "/logout"
+            }
+          </script>
+    </body>
+</html>

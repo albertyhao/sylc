@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    <title> Edit Shop </title>
+		<link href = "/main.css" rel = "stylesheet">
+		<style>
+
+		#header{
+			font-family: 'Do Hyeon', sans-serif;
+			margin:0;
+			padding:1vw;
+			background-color: #032b25;
+			color:white;
+			font-size:2vw;
+			text-align:left;
+			margin-bottom:30vh;
+		}
+
+		.link{
+			font-family: 'Do Hyeon', sans-serif;
+			color:white;
+			float:right;
+			padding-right:4vw;
+			text-decoration: none;
+		}
+			table {
+			    font-family: arial, sans-serif;
+			    border-collapse: collapse;
+			    width: 100%;
+			}
+
+			td, th {
+			    border: 1px solid #dddddd;
+			    text-align: left;
+			    padding: 8px;
+			}
+
+			tr:nth-child(even) {
+			    background-color: #dddddd;
+			}
+
+			img {
+				height: 40% !important;
+				width: 23% !important;
+			}
+
+			.newItem {
+				border-top: 5px solid #56B1BF;
+    		border-bottom: 5px solid #56B1BF;
+			}
+		</style>
+  </head>
+	<body>
+		<div id='header'>
+			<label>NonProfiteering</label>
+			<a href="/" class='link'>Home</a>
+			<a href='/feed' class='link'>Feed</a>
+			<a href='/events' class='link'>Events</a>
+			<a href='/individualprofile' class='link'>My Profile</a>
+		</div>
+		<h1> Edit Your Shop </h1>
+
+		<div>
+			<button id ="addItem" class = "btn">Add a New Item</button>
+		</div>
+
+		<br>
+
+		<div class ="newItem">
+			<p>New Item</p>
+			<div>
+				<input type='text' name='itemName' placeholder ="Item name">
+			</div>
+			<div>
+				<input type='text' name='itemPrice' placeholder ="Price">
+			</div>
+			<div>
+				<input type='text' name='itemSupply' placeholder ="Supply">
+			</div>
+			<div>
+				<input type='text' name='itemDescription' placeholder ="Description">
+			</div>
+			<div>
+				<input type='file' accept='image/*' name='picture'>
+			</div>
+		</div>
+
+		<br>
+
+		<div>
+		<button class='btn'><a href='/promocode'>Add a Promo Code</a></button>
+		</div>
+
+		<br>
+
+		<div class="shop-items">
+			<table>
+			  <tr>
+			    <th>Item</th>
+			    <th>Name</th>
+					<th>Description</th>
+					<th>Price</th>
+					<th></th>
+			  </tr>
+			  <tr>
+			    <td> <img style ="" src = "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6197/6197528_sd.jpg;maxHeight=640;maxWidth=550"</td>
+			    <td>Infinity Gauntlet</td>
+			    <td>The Universe Balancer</td>
+					<td>Gamora's Life</td>
+					<td>
+			  </tr>
+
+			</table>
+		</div>
+
+		<script>
+			$(document).ready(function(){
+				$("#addItem").click(function(){
+					$(".newItem").slideToggle();
+				});
+			});
+		</script>
+
+	</body>
+</html>

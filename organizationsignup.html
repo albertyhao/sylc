@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Organization Signup</title>
+	<link href="/main.css" rel = "stylesheet">
+	<style>
+
+	#header{
+		font-family: 'Do Hyeon', sans-serif;
+		margin:0;
+		padding:1vw;
+		background-color: #032b25;
+		color:white;
+		font-size:2vw;
+		text-align:left;
+		margin-bottom:30vh;
+	}
+
+	.link{
+		font-family: 'Do Hyeon', sans-serif;
+		color:white;
+		float:right;
+		padding-right:4vw;
+		text-decoration: none;
+	}
+		div {
+			text-align: center
+	 	}
+		h1{
+			color: #776677;
+			font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+			font-size:1.5em;
+			margin-top:8vw;
+			margin-bottom:.5vw;
+			text-align: center;
+		}
+	 	body {
+      font-size: 30px;
+      color: #ffffff;
+      background: #202020 url("https://png.pngtree.com/thumb_back/fw800/back_pic/04/48/50/00585a3568a0a7d.jpg") no-repeat top center fixed;
+      background-size: cover;
+    }
+
+    input{
+			border:none;
+	    border-bottom: solid 3px #776677;
+			margin-top:1vw;
+			text-align: center;
+			width: 30vw;
+	    background-color:transparent;
+	    color:black;
+			font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	    font-size:0.8em;
+      margin-bottom:3vw;
+    }
+
+    label{
+      margin-top:1vw;
+			text-align: center;
+			width: 30vw;
+	    background-color:transparent;
+	    color:black;
+			font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+	    font-size:0.8em;
+    }
+
+		::-webkit-input-placeholder {
+			text-align:center;
+			color: #AAAAAA
+		}
+		input:focus{
+			outline:none !important;
+			width: 30vw;
+    	background-color: #DDEEEE;
+			border-bottom:solid 3px #22BBCC;
+			animation-name: identifier;
+			animation-duration: 1.5s
+		}
+		@keyframes identifier {
+			from {background-color: white;, border-bottom:solid 3px #776677;}
+			to {background-color: #DDEEEE;, border-bottom:solid 3px #22BBCC;}
+		}
+		#button {
+			background-color: #FFFFFF;
+			padding: 0.6em;
+			border-radius: 20pt;
+			border-width: 2pt;
+			border-color: #22BBCC;
+			font-size: 13pt;
+			font-family: "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Tahoma, sans-serif;
+			color: #22BBCC;
+			height: auto;
+			width: 125px;
+			margin-top: 2vw;
+
+		}
+
+		#button:hover {
+				 background-color: #22BBCC;
+				 color: white;
+		}
+
+	</style>
+</head>
+<body>
+	<div id='header'>
+		<label>NonProfiteering</label>
+		<a href="/" class='link'>Home</a>
+		<a href='/feed' class='link'>Feed</a>
+		<a href='/events' class='link'>Events</a>
+		<a href='/individualprofile' class='link'>My Profile</a>
+	</div>
+		<h1>Sign Up Your Organization Here</h1>
+		<div>
+			<input id='name' type='text' name='name' placeholder='Name of Organization'>
+		</div>
+    <div>
+      <input id='email' type='text' name='email' placeholder='Email'>
+    </div>
+    <div>
+      <input id='address' type='text' name='address' placeholder='address'>
+    </div>
+		<div>
+			<input id='phoneNumber' type='text' name='phoneNumber' placeholder='Phone Number'>
+		</div>
+		<div>
+			<input id='password' type='password' name='password' placeholder='Password'>
+		</div>
+		<div>
+			<input id='password2' type='password' name='verify' placeholder='Verify'>
+		</div>
+    <div>
+			<input id='officers' type='text' name='officers' placeholder='Officers'>
+		</div>
+		<div>
+			<input id='officerEmails' type='text' name='officerEmails' placeholder='Officer Emails'>
+		</div>
+    <div>
+      <input id='description' type='text' name='description' placeholder='description'>
+    </div>
+    <div>
+    	<label>Logo</label>
+    	<input type='file' accept='image/*' name='avatar'>
+    	<div id='avatar'></div>
+    </div>
+		<div>
+			<button href='/search'>Sign Up</button>
+		</div>
+
+	<script>
+		var $inputs = document.querySelectorAll('input')
+		var $button = document.querySelector('button')
+
+		var imageData;
+
+		function storeData() {
+			var data = {};
+			for (var i = 0; i < $inputs.length; i++) {
+				var $input = $inputs[i];
+				if($input.type === 'text' || $input.type === 'password'){
+					data[$input.name] = $input.value
+				}else if($input.type === 'file'){
+					data[$input.name] = imageData;
+				}
+			}
+			verifyPassword();
+			sendData(data);
+		}
+
+		function verifyPassword() {
+			var $passwords = document.querySelectorAll('input[type="password"]');
+			var $samePasswords = $passwords[0].value === $passwords[1].value
+			if (!$samePasswords) return alert('Passwords not matching')
+			return true
+		}
+
+		function sendData(data) {
+			// Creating a new request to the server that contains the data
+			var req = new XMLHttpRequest();
+			if (!data.name) return alert('Fill out all fields')
+			// Opening up a connection with the server to 'POST' data
+			req.open('POST', '/organization', true);
+
+			// Explain to the server that we are sending the data in json format
+			req.setRequestHeader('content-type', 'application/json')
+			// Alert the user to any errors from the server
+			function readyStateChange() {
+				if (req.readyState !== 4) return;
+				if (req.status !== 200) return;
+				data = JSON.parse(req.responseText);
+				if (data.error) {
+					alert(data.error);
+				}
+				window.location.href = "/organizationprofile/" + data.id;
+			}
+			req.onreadystatechange = readyStateChange;
+			// Sending the data in JSON format
+			req.send(JSON.stringify(data));
+		}
+
+		$button.addEventListener('click', storeData);
+	</script>
+</body>
+
+</html>

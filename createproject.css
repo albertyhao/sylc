@@ -1,0 +1,117 @@
+header, section {
+	margin:3vh 2vw;
+}
+
+h1 {
+	font-size:xx-large;
+}
+
+h2 {
+	font-size:x-large;
+}
+
+input {
+	font-size:large;
+	min-width: 50vw;
+	padding:0.5em;
+	margin-right:1em;
+}
+
+.xButton {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+
+.xButton {
+	margin-left: 10px;
+}
+
+#editor-container {
+    height: 375px;
+}
+
+.roleForQuestion {
+	padding:0 1em;
+}
+
+.margin {
+	padding: 4vw 2vw 2vw 2vw;
+}
+
+li {
+
+}
+
+#xButton {
+	margin-left: 1vw;
+}
+
+// Any Button
+.styled-select {
+}
+
+.styled-select select {
+   background: #46A0F0;
+   border: none;
+   font-size: 20px;
+	 height: 40px;
+   padding: 5px; /* If you add too much padding here, the options won't show in IE */
+}
+
+.semi-square {
+   -webkit-border-radius: 5px;
+   -moz-border-radius: 5px;
+   border-radius: 5px;
+	 display: inline;
+    overflow: hidden;
+    width: 100px;
+}
+
+.green   { background-color: #46A0F0; }
+
+.green select {
+	color: #fff;
+}
+
+.btn:hover {
+    background: #46A0F0;
+    color: #deeffd;
+    -webkit-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+}
+
+
+.btn2 {
+    border: 4px solid #46A0F0;
+    padding: 10px 20px;
+    border-radius: 50px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    text-decoration: none;
+    outline: none;
+    /*-webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    -webkit-transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);*/
+    background: #fff;
+    color: #46A0F0;
+    font-size: 15px;
+}
+
+.btn2:hover {
+    background: #46A0F0;
+    color: #fff;
+    border: 4px solid #46A0F0;
+    border-radius: 50px;
+    /*-webkit-box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 7px 14px rgba(0, 0, 0, 0.18), 0 5px 5px rgba(0, 0, 0, 0.12);*/
+}
+
+.btn2 {
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
