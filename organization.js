@@ -14,10 +14,10 @@ var model = mongoose.model('makegroup', new mongoose.Schema({
   phoneNumber: {
     type: String,
   },
-  officers: {
+  members: {
     type: String,
   },
-  officerEmails: {
+  membersEmails: {
     type: String,
   },
   description: {
