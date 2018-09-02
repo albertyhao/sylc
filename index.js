@@ -137,7 +137,7 @@ function startServer() {
   });
 
   app.get('/main.css', (req, res, next) =>{
-    var filePath = path.join(__dirname, '/main.css');
+    var filePath = path.join(__dirname, './main.css');
     var fileContents = fs.readFileSync(filePath, 'utf8')
     res.send(fileContents)
   });
