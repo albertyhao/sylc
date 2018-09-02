@@ -49,7 +49,6 @@ function startServer() {
     })
   }
 
-
   app.use(bodyParser.json({
     limit: '16mb'
   }));
@@ -73,21 +72,6 @@ function startServer() {
     })
   })
 
-  app.get('/checkout', (req, res, next) => {
-    var filePath = path.join(__dirname, '/checkout.html');
-    res.sendFile(filePath);
-  });
-
-	app.post('/newproject', (req, res, next) => {
-		if(!req.user) return res.redirect('/login');
-		var newproject = new projectmodel(req.body);
-		newproject.dateCreated = new Date();
-		newproject.owner = req.user;
-		newproject.save((err, resp) => {
-			res.send(`/createproject/${newproject._id}`);
-		});
-	});
-
   app.post('/feed', (req, res, next) => {
     if(!req.user) return res.send({error: 'Not Logged In'});
 		var newpost = new postmodel(req.body);
@@ -97,22 +81,6 @@ function startServer() {
 			res.send({success: true});
 		});
   })
-
-	app.get('/createproject/:id', (req, res, next) => {
-		if(!req.user) return res.redirect('/login');
-		projectmodel.findById(req.params.id).populate('owner').exec((err, project) => {
-			if(err || !project) {
-				return next();
-			}
-			var filePath = path.join(__dirname, './editproject.html');
-			var projectPage = fs.readFileSync(filePath, 'utf8');
-			var projectData = project.toJSON();
-			cleanUpUser(projectData.owner);
-			projectPage = projectPage.replace('{{DATA}}', JSON.stringify(projectData));
-			res.send(projectPage);
-		})
-
-	});
 
   app.get('/organizationprofile/:id', (req, res, next) =>{
     if(!req.user) return res.send({error: 'Not Logged In'});
@@ -162,12 +130,6 @@ function startServer() {
     res.send(fileContents)
   });
 
-  app.get('/itempage', (req, res, next) =>{
-    var filePath = path.join(__dirname, '/itempage.html');
-    var fileContents = fs.readFileSync(filePath, 'utf8')
-    res.send(fileContents)
-  });
-
   app.get('/editindividualprofile', (req, res, next) =>{
     var filePath = path.join(__dirname, '/editindividualprofile.html');
     var fileContents = fs.readFileSync(filePath, 'utf8')
@@ -176,12 +138,6 @@ function startServer() {
 
   app.get('/main.css', (req, res, next) =>{
     var filePath = path.join(__dirname, '/main.css');
-    var fileContents = fs.readFileSync(filePath, 'utf8')
-    res.send(fileContents)
-  });
-
-  app.get('/continuetocheckout', (req, res, next) =>{
-    var filePath = path.join(__dirname, '/continuetocheckout.html');
     var fileContents = fs.readFileSync(filePath, 'utf8')
     res.send(fileContents)
   });
@@ -225,24 +181,9 @@ function startServer() {
     res.send(fileContents)
   });
 
-  app.get('/createproject', (req, res, next) => {
-    var filePath = path.join(__dirname, '/createproject.html');
-    res.sendFile(filePath);
-  });
-
-  app.get('/createproject.js', (req, res, next) => {
-    var filePath = path.join(__dirname, '/createproject.js');
-    res.sendFile(filePath);
-  });
-
   app.get('/organizationsignup', (req, res, next) => {
     if(!req.user) return res.redirect('/login');
     var filePath = path.join(__dirname, '/organizationsignup.html');
-    res.sendFile(filePath);
-  });
-
-  app.get('/createproject.css', (req, res, next) => {
-    var filePath = path.join(__dirname, '/createproject.css');
     res.sendFile(filePath);
   });
 
@@ -258,11 +199,6 @@ function startServer() {
 
   app.get('/organization', (req, res, next) => {
     var filePath = path.join(__dirname, './organization.html')
-    res.sendFile(filePath);
-  });
-
-  app.get('/projects', (req, res, next) => {
-    var filePath = path.join(__dirname, './projects.html')
     res.sendFile(filePath);
   });
 
@@ -299,11 +235,6 @@ function startServer() {
     res.sendFile(filePath);
   });
 
-  app.get('/editshop', (req, res, next) => {
-    var filePath = path.join(__dirname, './editshop.html');
-    res.sendFile(filePath);
-  });
-
   app.get('/events', (req, res, next) => {
     var filePath = path.join(__dirname, './events.html');
     res.sendFile(filePath);
@@ -327,11 +258,6 @@ function startServer() {
 
   app.get('/groupapplication', (req, res, next) => {
     var filePath = path.join(__dirname, './groupapplication.html');
-    res.sendFile(filePath);
-  });
-
-  app.get('/cart', (req, res, next) => {
-    var filePath = path.join(__dirname, './cart.html');
     res.sendFile(filePath);
   });
 
@@ -359,17 +285,7 @@ function startServer() {
 		res.send('OK');
 	});
 
-  app.post('cart', (req, res, next) => {
-		console.log(req.body);
-		res.send('OK');
-	});
-
-  app.post('application', (req, res, next) => {
-		console.log(req.body);
-		res.send('OK');
-	});
-
-  app.post('editshop', (req, res, next) => {
+  app.post('groupapplication', (req, res, next) => {
 		console.log(req.body);
 		res.send('OK');
 	});
@@ -380,11 +296,6 @@ function startServer() {
 	});
 
   app.post('/feedback-form', (req, res, next) => {
-		console.log(req.body);
-		res.send('OK');
-	});
-
-  app.post('/checkout', (req, res, next) => {
 		console.log(req.body);
 		res.send('OK');
 	});
