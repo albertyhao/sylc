@@ -112,7 +112,7 @@ function startServer() {
     res.send(fileContents)
   });
 
-  app.get('/todo', (req, res, next) =>{
+  app.get('/todo.html', (req, res, next) =>{
     var filePath = path.join(__dirname, '/todo.html');
     var fileContents = fs.readFileSync(filePath, 'utf8')
     res.send(fileContents)
