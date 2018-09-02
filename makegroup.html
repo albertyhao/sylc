@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <link href = "/main.css" rel = "stylesheet">
+    <style>
+    </style>
+    <title>Make Group</title>
+  </head>
+<body>
+		<h1>Make a group here!</h1>
+		<div>
+			<input id='name' type='text' name='name' placeholder='Name of Group'>
+		</div>
+    <div>
+      <input id='email' type='text' name='email' placeholder="Group Leader's Email">
+    </div>
+		<div>
+			<input id='phoneNumber' type='text' name='phoneNumber' placeholder="Group Leader's  Number">
+		</div>
+		<div>
+			<input id='password' type='password' name='password' placeholder='Password'>
+		</div>
+		<div>
+			<input id='password2' type='password' name='verify' placeholder='Verify'>
+		</div>
+    <div>
+			<input id='members' type='text' name='officers' placeholder='Members'>
+		</div>
+		<div>
+			<input id='membersEmails' type='text' name='officerEmails' placeholder="Members' Emails">
+		</div>
+    <div>
+      <input id='description' type='text' name='description' placeholder='description'>
+    </div>
+    <div>
+    	<label>Logo</label>
+    	<input type='file' accept='image/*' name='avatar'>
+    	<div id='avatar'></div>
+    </div>
+		<div>
+			<button href='/search'>Sign Up</button>
+		</div>
+
+  	<script>
+  		var $inputs = document.querySelectorAll('input')
+  		var $button = document.querySelector('button')
+
+  		var imageData;
+
+  		function storeData() {
+  			var data = {};
+  			for (var i = 0; i < $inputs.length; i++) {
+  				var $input = $inputs[i];
+  				if($input.type === 'text' || $input.type === 'password'){
+  					data[$input.name] = $input.value
+  				}else if($input.type === 'file'){
+  					data[$input.name] = imageData;
+  				}
+  			}
+  			verifyPassword();
+  			sendData(data);
+  		}
+
+  		function verifyPassword() {
+  			var $passwords = document.querySelectorAll('input[type="password"]');
+  			var $samePasswords = $passwords[0].value === $passwords[1].value
+  			if (!$samePasswords) return alert('Passwords not matching')
+  			return true
+  		}
+
+  		function sendData(data) {
+  			// Creating a new request to the server that contains the data
+  			var req = new XMLHttpRequest();
+  			if (!data.name) return alert('Fill out all fields')
+  			// Opening up a connection with the server to 'POST' data
+  			req.open('POST', '/organization', true);
+
+  			// Explain to the server that we are sending the data in json format
+  			req.setRequestHeader('content-type', 'application/json')
+  			// Alert the user to any errors from the server
+  			function readyStateChange() {
+  				if (req.readyState !== 4) return;
+  				if (req.status !== 200) return;
+  				data = JSON.parse(req.responseText);
+  				if (data.error) {
+  					alert(data.error);
+  				}
+  				window.location.href = "/organizationprofile/" + data.id;
+  			}
+  			req.onreadystatechange = readyStateChange;
+  			// Sending the data in JSON format
+  			req.send(JSON.stringify(data));
+  		}
+
+  		$button.addEventListener('click', storeData);
+  	</script>
+  </body>
+</html>
