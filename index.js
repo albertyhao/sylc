@@ -293,6 +293,16 @@ function startServer() {
     res.sendFile(filePath);
   });
 
+  app.get('/makegroup', (req, res, next) => {
+    var filePath = path.join(__dirname, './makegroup.html');
+    res.sendFile(filePath);
+  });
+
+  app.post('makegroup', (req, res, next) => {
+    console.log(req.body);
+    res.send('OK');
+  });
+
   app.post('resources', (req, res, next) => {
 		console.log(req.body);
 		res.send('OK');
