@@ -118,12 +118,6 @@ function startServer() {
     res.send(fileContents)
   });
 
-  app.get('/todo.css', (req, res, next) =>{
-    var filePath = path.join(__dirname, '/todo.css');
-    var fileContents = fs.readFileSync(filePath, 'utf8')
-    res.send(fileContents)
-  });
-
   app.get('/todo.js', (req, res, next) =>{
     var filePath = path.join(__dirname, '/todo.js');
     var fileContents = fs.readFileSync(filePath, 'utf8')
@@ -150,12 +144,6 @@ function startServer() {
 
   app.get('/editindividualprofile', (req, res, next) =>{
     var filePath = path.join(__dirname, '/editindividualprofile.html');
-    var fileContents = fs.readFileSync(filePath, 'utf8')
-    res.send(fileContents)
-  });
-
-  app.get('/main.css', (req, res, next) =>{
-    var filePath = path.join(__dirname, './main.css');
     var fileContents = fs.readFileSync(filePath, 'utf8')
     res.send(fileContents)
   });
@@ -247,11 +235,6 @@ function startServer() {
     req.logOut();
     res.redirect('/login');
   })
-
-  app.get('/home.css', (req, res, next) => {
-    var filePath = path.join(__dirname, './home.css');
-    res.sendFile(filePath);
-  });
 
   app.get('/events', (req, res, next) => {
     var filePath = path.join(__dirname, './events.html');
